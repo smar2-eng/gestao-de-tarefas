@@ -35,6 +35,6 @@ foreach ([
     try {
         R::exec("ALTER TABLE tarefa ADD COLUMN {$column}");
     } catch (Throwable $e) {
-        // A coluna já existe em instalações atualizadas.
+        
     }
 }
