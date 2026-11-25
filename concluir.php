@@ -7,7 +7,7 @@ $id = (int) ($_POST['id'] ?? 0);
 
 if ($id > 0) {
     $tarefa = R::load('tarefa', $id);
-    // Só mexe na tarefa se ela for do usuário logado
+   
     if ($tarefa->id && (int) $tarefa->usuario_id === (int) usuario_logado()) {
         if ($tarefa->concluida) {
             $tarefa->concluida = 0;
