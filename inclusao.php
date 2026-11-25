@@ -10,10 +10,9 @@ if ($descricao !== '' && $usuario->id) {
     $tarefa->descricao = $descricao;
     $tarefa->concluida = 0;
     $tarefa->criada_em = date('Y-m-d H:i:s');
-    $tarefa->usuario = $usuario; // a tarefa pertence ao usuário logado
+    $tarefa->usuario = $usuario; 
     R::store($tarefa);
 }
 
-// Depois de criar, volta para "Todas" para o usuário ver a tarefa nova na lista
 header('Location: index.php');
 exit;
