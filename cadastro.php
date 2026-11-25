@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = R::dispense('usuario');
         $usuario->nome = $nome;
         $usuario->email = $email;
-        $usuario->senha = password_hash($senha, PASSWORD_DEFAULT); // nunca guardamos a senha em texto puro
+        $usuario->senha = password_hash($senha, PASSWORD_DEFAULT); 
         $usuario->criado_em = date('Y-m-d H:i:s');
         R::store($usuario);
 
