@@ -25,7 +25,6 @@ body {
     padding: 24px 20px 40px;
 }
 
-/* Topo */
 .topo {
     display: flex;
     align-items: center;
@@ -61,7 +60,6 @@ h1 {
     line-height: 1.15;
 }
 
-/* Cartão */
 .cartao {
     background: var(--cartao);
     border: 1px solid var(--borda);
@@ -137,7 +135,6 @@ h1 {
     background: #435a41;
 }
 
-/* Filtros */
 .barra {
     display: flex;
     align-items: center;
@@ -195,7 +192,6 @@ h1 {
     color: var(--suave);
 }
 
-/* Lista */
 .lista {
     list-style: none;
     margin: 0;
@@ -310,7 +306,6 @@ h1 {
     background: #f7e9e6;
 }
 
-/* Rodapé */
 .rodape {
     display: flex;
     justify-content: space-between;
@@ -337,7 +332,6 @@ h1 {
     }
 }
 
-/* Usuário logado (topo) */
 .topo .usuario {
     margin-left: auto;
     display: flex;
@@ -357,7 +351,6 @@ h1 {
     text-decoration: underline;
 }
 
-/* Login e cadastro */
 .pagina.estreita {
     max-width: 480px;
 }
