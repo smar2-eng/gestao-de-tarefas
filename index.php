@@ -3,21 +3,18 @@ require_once __DIR__ . '/autenticacao.php';
 exigir_login();
 $uid = usuario_logado();
 
-// Evita que o navegador reaproveite uma versão antiga da página (por exemplo, com outro filtro)
 header('Cache-Control: no-store, no-cache, must-revalidate');
 
-// Filtro: "todas" é o padrão fixo
 $permitidos = ['todas', 'concluidas', 'nao-concluidas'];
 $filtro = $_GET['filtro'] ?? 'todas';
 if (!in_array($filtro, $permitidos, true)) {
     $filtro = 'todas';
 }
 
-// A tabela só existe depois da primeira tarefa criada
 $tarefas = [];
 $total = $feitas = 0;
 if (in_array('tarefa', R::inspect())) {
-    // Só as tarefas do usuário logado
+    
     $total  = R::count('tarefa', 'usuario_id = ?', [$uid]);
     $feitas = R::count('tarefa', 'usuario_id = ? AND concluida = 1', [$uid]);
 
@@ -31,7 +28,6 @@ if (in_array('tarefa', R::inspect())) {
 }
 $pendentes = $total - $feitas;
 
-// "Hoje · 14h", "Ontem · 9h30", "03/11 · 8h"
 function quando($datahora) {
     if (!$datahora) return '';
     $ts = strtotime($datahora);
@@ -87,7 +83,6 @@ function aba($atual, $link) { return $atual === $link ? 'ativa' : ''; }
 
     <section class="cartao">
 
-        <!-- Nova tarefa -->
         <form action="inclusao.php" method="post" class="nova">
             <label for="descricao">Nova tarefa</label>
             <div class="nova-linha">
@@ -102,7 +97,6 @@ function aba($atual, $link) { return $atual === $link ? 'ativa' : ''; }
             </div>
         </form>
 
-        <!-- Filtros -->
         <div class="barra">
             <nav class="abas">
                 <a href="index.php?filtro=todas" class="<?= aba($filtro, 'todas') ?>">Todas <span><?= $total ?></span></a>
@@ -112,7 +106,6 @@ function aba($atual, $link) { return $atual === $link ? 'ativa' : ''; }
             <span class="resumo"><?= $total ?> <?= $total === 1 ? 'tarefa' : 'tarefas' ?> no caderno</span>
         </div>
 
-        <!-- Lista -->
         <ul class="lista">
             <?php if (empty($tarefas)): ?>
                 <li class="vazio">Nenhuma tarefa por aqui.</li>
